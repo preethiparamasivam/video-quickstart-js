@@ -4,6 +4,13 @@
     <title>Twilio Video QuickStart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" href="index.css" />
+
+    <link rel="stylesheet" href="screenshare/index.css" />
+    <link rel="stylesheet" href="screenshare/prism.css">
+
+    <link rel="stylesheet" href="autorenderhint/index.css">
+    <link rel="stylesheet" href="autorenderhint/prism.css">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
   </head>
   <body>
@@ -16,11 +23,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="collapsible-content">
-        <ul class="navbar-nav mr-auto">
+        <!--<ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="/examples">More Examples</a>
           </li>
-        </ul>
+        </ul> -->
         <button class="btn btn-outline-primary" id="leave-room">Leave Room</button>
       </div>
     </nav>
@@ -33,6 +40,84 @@
           </div>
         </div>
       </div>
+      <!--- screen share start-->
+        <div class="row thin-gutters align">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">
+                  Share Your Screen
+                </h4>
+                <button class="btn btn-primary collapsed d-md-none" type="button" data-toggle="collapse" data-target="#collapseSnippet" aria-expanded="false" aria-controls="collapseSnippet">
+                  <span class="if-collapsed">Show Code</span>
+                  <span class="if-not-collapsed">Hide Code</span>
+                </button>
+                <div class="collapse dont-collapse-sm d-md-block" id="collapseSnippet">
+                  <pre id="shown-snippet" class="language-javascript"></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Local Screen</h4>
+                <div id="screenshare" class="card-body">
+                  <video id="screenpreview" autoplay></video>
+                  <button id="capturescreen" class="btn btn-primary btn-block">Capture Screen</button>
+                  <button id="stopscreencapture" class="btn btn-primary btn-block">Stop Screen Capture</button>
+                </div>
+              </div>
+              <div class="card-block">
+                <h4 class="card-title">Remote Screen</h4>
+                <div id="screenshare" class="card-body">
+                  <video id="screenpreview" class="remote-screenpreview" autoplay></video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!--- screen share end-->
+
+ 
+      <!-- remote video controls start-->
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Remote Video Controls</h4>
+            <div id="userControls">
+              <div class="card-block">
+                Toggle Visibility:
+                <button id="showVideo" type="button" class="btn btn-primary disabled">Show</button>
+                <button id="hideVideo" type="button" class="btn btn-primary disabled">Hide</button>
+              </div>
+              <div class="card-block">
+                Video Size:
+                <select id= "renderDimensionsOption" class="btn btn-primary dropdown-toggle disabled">
+                  <option value="" disabled selected hidden>Render Dimensions</option>
+                  <option value="qHD">960x540</option>
+                  <option value="VGA">640x480</option>
+                  <option value="QCIF">176x144</option>
+                </select>
+              </div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">Remote Video Track</h4>
+              <div id="media-container" style="width: 960px; height: 540px">
+                <div id="bg-img" aria-hidden="true" hidden></div>
+                <video id="remotevideo" aria-hidden="true"></video>
+                <span id="trackIsSwitchedOff" class="badge badge-success"></span>
+              </div>
+            </div>
+            <h4 class="card-title">Video Bitrate</h4>
+            <div id="videobitrategraph" class="bitrategraph">
+              <canvas id="videobitratecanvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--remote video controls end-->
       <div id="modals">
         <div class="modal fade" id="select-mic" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="select-mic-label" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -118,5 +203,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="index.js"></script>
+    <script src="screenshare/index.js"></script>
+    <script src="autorenderhint/index.js"></script>
   </body>
 </html>

@@ -31,12 +31,12 @@ div.participant > video {
 div.participant.main {
   height: inherit;
   margin: 10px 0;
-  max-width: 100%;
-  width: 100%;
+  max-width: 50%;
+  width: 50%;
 }
 
 div.participant.main > video {
-  height: 720px;
+  height: 220px;
 }
 
 div.participant.active {
@@ -79,7 +79,7 @@ div.participant.main::before {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 468px) {
   div.participant.main > video {
     height: 270px;
   }
